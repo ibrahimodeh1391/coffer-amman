@@ -24,6 +24,10 @@ Target: ibrahimodeh1391.github.io
 TTL:    Auto (or 3600)
 ```
 
-Then set `coffee.ibrix.digital` as the custom domain in the repository's GitHub Pages settings and enable HTTPS after DNS verification.
+GitHub Pages publishes the root of the `gh-pages` branch. The `main` branch contains the application source; the ZIP archive is retained as a reference. Only the contents of `dist/client` belong in the deployment branch.
+
+Before each deployment, run `npm ci`, `npm run build`, and `npm run test:sites`, then publish the contents of `dist/client` to `gh-pages`. Keep `CNAME` and `.nojekyll` in the published root. Source pushes alone do not rebuild the live site.
+
+Set the Pages publishing source to the `gh-pages` branch (root), and set `coffee.ibrix.digital` as the custom domain. Enable HTTPS after DNS verification.
 
 Run `npm install`, then `npm run dev` for local development. `npm run build` and `npm run test:sites` verify the production bundle.
